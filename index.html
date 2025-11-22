@@ -3,14 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OBI DOWLOAD</title>
+<title>OBI DOWNLOAD</title>
 
 <style>
 :root{
   --accent:#00ffc3;
   --glow:#00ff88;
   --text:#e8f2f2;
-  --muted:#9aa6b2;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{
@@ -20,32 +19,23 @@ body{
   min-height:100vh;
   overflow-x:hidden;
 
-  /* Background chính */
   background-image: url('https://sf-static.upanhlaylink.com/img/image_20251121040ff21b962a912d0f263f2fdeca9a3a.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 }
 
-/* ==================== POPUP ==================== */
+/* POPUP */
 #alertBox{
-  position:fixed;
-  top:0; left:0; width:100%; height:100%;
+  position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(0,0,0,0.7);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex;align-items:center;justify-content:center;
   z-index:9999;
 }
-
 #alertContent{
   background:rgba(0,0,0,0.85);
-  padding:20px;
-  width:80%;
-  max-width:360px;
-  border-radius:12px;
-  text-align:center;
-  font-size:18px;
+  padding:20px;width:80%;max-width:360px;
+  border-radius:12px;text-align:center;font-size:18px;
   border:3px solid transparent;
   background-clip:padding-box, border-box;
   background-origin:border-box;
@@ -54,32 +44,20 @@ body{
     linear-gradient(45deg, red, orange, yellow, green, cyan, blue, purple);
   animation:borderGlow 3s ease-in-out infinite alternate;
 }
-
 #alertContent img{
-  width:80px;
-  height:80px;
-  object-fit:cover;
-  border-radius:12px;
-  margin-bottom:10px;
+  width:80px;height:80px;object-fit:cover;border-radius:12px;margin-bottom:10px;
 }
-
 @keyframes borderGlow{
   from{box-shadow:0 0 8px var(--glow);}
   to{box-shadow:0 0 25px var(--glow);}
 }
-
 #okBtn{
-  margin-top:15px;
-  background:var(--accent);
-  padding:10px 22px;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+  margin-top:15px;background:var(--accent);
+  padding:10px 22px;border:none;border-radius:8px;
+  font-size:16px;font-weight:bold;cursor:pointer;
 }
 
-/* ===================== KHUNG DANH SÁCH ===================== */
+/* SECTIONS */
 .section{
   background: rgba(0,0,0,0.65);
   border-radius: 14px;
@@ -90,7 +68,7 @@ body{
   box-shadow: 0 5px 15px rgba(0,255,128,0.2);
 }
 
-/* ================= CARDS CHUNG ================= */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -101,45 +79,28 @@ body{
 .card{
   background:rgba(17,26,35,0.85);
   border:2px solid rgba(255,255,255,0.05);
-  padding:16px;
-  border-radius:12px;
-  display:flex;
-  gap:14px;
-  align-items:center;
+  padding:16px;border-radius:12px;
+  display:flex;gap:14px;align-items:center;
   backdrop-filter:blur(6px);
-  transition:.25s;
-  cursor:pointer;
+  transition:.25s;cursor:pointer;
 }
-
 .card:hover, .card.active{
   transform:translateY(-6px);
   box-shadow:0 10px 25px rgba(0,255,0,0.4);
   border-color:#00ff00;
 }
-
 .icon img{
-  width:68px; height:68px;
-  border-radius:14px;
-  object-fit:cover;
+  width:68px;height:68px;border-radius:14px;object-fit:cover;
 }
-
 .btn{
-  margin-left:auto;
-  background:var(--accent);
-  color:#00332b;
-  padding:8px 14px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:600;
-  font-size:14px;
+  margin-left:auto;background:var(--accent);
+  color:#00332b;padding:8px 14px;border-radius:8px;
+  text-decoration:none;font-weight:600;font-size:14px;
 }
 
 /* TITLE */
 h1{
-  text-align:center;
-  margin-bottom:10px;
-  font-size:22px;
-  font-weight:bold;
+  text-align:center;margin-bottom:10px;font-size:22px;font-weight:bold;
   background:linear-gradient(270deg,#FF0000,#FF7F00,#FFFF00,#00FF00,#0000FF,#4B0082,#8B00FF);
   background-size:1400% 1400%;
   -webkit-background-clip:text;
@@ -171,6 +132,43 @@ h1{
 <!-- MUSIC -->
 <audio id="bgMusic" src="https://files.catbox.moe/m9zgnj.mp3" loop></audio>
 
+<!-- SUPPORT SECTION -->
+<div class="section">
+    <h1>SUPPORT CONTACT ME</h1>
+
+    <div class="grid">
+
+        <!-- TELEGRAM -->
+        <div class="card" onclick="window.open('https://t.me/obi74z','_blank')">
+            <div class="icon">
+                <img src="https://sf-static.upanhlaylink.com/img/image_20251121f509008fa266794e062500bc237451ab.jpg">
+            </div>
+
+            <div class="meta">
+                <h3>Telegram</h3>
+                <p>Hỗ trợ qua Telegram</p>
+            </div>
+
+            <a class="btn" href="https://t.me/obi74z" target="_blank">Mở</a>
+        </div>
+
+        <!-- FACEBOOK -->
+        <div class="card" onclick="window.open('https://www.facebook.com/share/1EhidJAfT5/?mibextid=wwXIfr','_blank')">
+            <div class="icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png">
+            </div>
+
+            <div class="meta">
+                <h3>Facebook</h3>
+                <p>Hỗ trợ qua Facebook</p>
+            </div>
+
+            <a class="btn" href="https://www.facebook.com/share/1EhidJAfT5/?mibextid=wwXIfr" target="_blank">Mở</a>
+        </div>
+
+    </div>
+</div>
+
 <!-- DANH SÁCH ỨNG DỤNG -->
 <div class="section">
   <h1>DANH SÁCH ỨNG DỤNG</h1>
@@ -184,18 +182,17 @@ h1{
 </div>
 
 <script>
-/* =============== DATA =============== */
 const apps = [
-  {name:"AOV HACK V1", desc:"BY PHONG LỎ [ĐÃ BAN KO NÊN CHƠI]", img:"https://sf-static.upanhlaylink.com/img/image_20251120048774b7d532a663552c5b0caa19d692.jpg", link:"https://link4m.com/KorQAP"},
-  {name:"TTS HACK AOV", desc:"CRACK BY OBI [CRACK KEY]", img:"https://sf-static.upanhlaylink.com/img/image_20251120048774b7d532a663552c5b0caa19d692.jpg", link:"https://link4m.com/Z0gp14"},
+  {name:"AOV HACK V1", desc:"BY PHONG LỎ", img:"https://sf-static.upanhlaylink.com/img/image_20251120048774b7d532a663552c5b0caa19d692.jpg", link:"https://link4m.com/hethanroi"},
+  {name:"AOV HACK V2", desc:"CRACK BY OBI", img:"https://sf-static.upanhlaylink.com/img/image_20251120048774b7d532a663552c5b0caa19d692.jpg", link:"https://link4m.com/Z0gp14"},
   {name:"FILE REG FF 100K", desc:"SUPPORT: CÀI QUA FILZA", img:"https://sf-static.upanhlaylink.com/img/image_20251120c1af605f17aefa1b2adf07ba703ad9d5.jpg", link:"https://link4m.com/zGTWE2OM"}
 ];
 
 const tools = [
-  {name:"MONTER TOOL", desc:"MONTER V1.6.5", img:"https://sf-static.upanhlaylink.com/img/image_20251120262d0b5467d05207177d3d49ea82c171.jpg", link:"https://www.mediafire.com/file/om2andqgn0t7bmn/mtool.py/file"}
+  {name:"MONTER TOOL", desc:"MONTER V1.6.5", img:"https://sf-static.upanhlaylink.com/img/image_20251120262d0b5467d05207177d3d49ea82c171.jpg", link:"https://www.mediafire.com/file/om2andqgn0t7bmn/mtool.py/file"},
+  {name:"DROP KEY VIP MONTER TOOL", desc:"SHARE KEY VIP BẤT NGỜ", img:"https://sf-static.upanhlaylink.com/img/image_20251120262d0b5467d05207177d3d49ea82c171.jpg", link:"https://www.mediafire.com/file/om2andqgn0t7bmn/xxx.py/file"}
 ];
 
-/* ========= GEN CARD ========= */
 function render(list, boxId){
   const box = document.getElementById(boxId);
   list.forEach(a=>{
@@ -220,7 +217,7 @@ function render(list, boxId){
 render(apps, "appGrid");
 render(tools, "toolGrid");
 
-/* ========= POPUP & AUDIO ========= */
+/* POPUP */
 const alertBox = document.getElementById("alertBox");
 const okBtn = document.getElementById("okBtn");
 const music = document.getElementById("bgMusic");

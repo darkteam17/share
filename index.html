@@ -11,18 +11,123 @@
   --glow:#00ff88;
   --text:#e8f2f2;
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:Inter,Arial,sans-serif;
   color:var(--text);
   padding:20px;
+  padding-top:85px; /* ĐẨY NỘI DUNG XUỐNG DƯỚI THANH BAR */
   min-height:100vh;
   overflow-x:hidden;
-
   background-image: url('https://sf-static.upanhlaylink.com/img/image_20251121040ff21b962a912d0f263f2fdeca9a3a.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+/* TOP BAR */
+#topBar{
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  height:60px;
+  background: rgba(0,0,0,0.65);
+  border-bottom:2px solid var(--accent);
+  backdrop-filter: blur(6px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 18px;
+  z-index:99999;
+  box-shadow:0 3px 15px rgba(0,255,150,0.3);
+}
+
+#menuBtn{
+  font-size:30px;
+  color:var(--accent);
+  padding:6px 12px;
+  border-radius:8px;
+  border:2px solid var(--accent);
+  background:rgba(0,0,0,0.45);
+  cursor:pointer;
+  box-shadow:0 0 10px rgba(0,255,200,.6);
+}
+
+#themeBtn{
+  font-size:26px;
+  color:var(--accent);
+  padding:6px 12px;
+  border-radius:8px;
+  border:2px solid var(--accent);
+  background:rgba(0,0,0,0.45);
+  cursor:pointer;
+  box-shadow:0 0 10px rgba(0,255,200,.6);
+}
+
+/* SIDE MENU */
+#sideMenu{
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: rgba(0,0,0,0.87);
+  backdrop-filter: blur(8px);
+
+  padding: 90px 22px 25px; /* ⬅ HOME không bị chèn bởi nút 3 gạch */
+
+  z-index: 99998;
+  transition: 0.35s ease;
+  border-right: 2px solid var(--accent);
+}
+
+#sideMenu a{
+  display:block;
+  padding:16px;
+  margin:18px 0;
+  background:rgba(0,255,128,0.18);
+  border-radius:10px;
+  color:var(--accent);
+  font-size:20px;
+  font-weight:bold;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+#sideMenu a:hover{
+  background:rgba(0,255,128,0.35);
+}
+
+/* DARK/LIGHT MODE */
+.light-mode{
+  --accent:#0066ff;
+  --glow:#3399ff;
+  --text:#000;
+  background:#e8f0ff !important;
+}
+
+.light-mode #topBar{
+  background:#d7e5ff;
+  border-bottom-color:#0066ff;
+}
+
+.light-mode #menuBtn,
+.light-mode #themeBtn{
+  background:#fff;
+  border-color:#0066ff;
+  color:#0066ff;
+}
+
+.light-mode #sideMenu{
+  background:#ffffffdd;
+  border-right-color:#0066ff;
+}
+
+.light-mode #sideMenu a{
+  background:#d8e6ff;
+  color:#003399;
 }
 
 /* POPUP */
@@ -44,9 +149,7 @@ body{
     linear-gradient(45deg, red, orange, yellow, green, cyan, blue, purple);
   animation:borderGlow 3s ease-in-out infinite alternate;
 }
-#alertContent img{
-  width:80px;height:80px;object-fit:cover;border-radius:12px;margin-bottom:10px;
-}
+#alertContent img{width:80px;height:80px;border-radius:12px;margin-bottom:10px;}
 @keyframes borderGlow{
   from{box-shadow:0 0 8px var(--glow);}
   to{box-shadow:0 0 25px var(--glow);}
@@ -68,14 +171,12 @@ body{
   box-shadow: 0 5px 15px rgba(0,255,128,0.2);
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:16px;
   margin-top:10px;
 }
-
 .card{
   background:rgba(17,26,35,0.85);
   border:2px solid rgba(255,255,255,0.05);
@@ -89,22 +190,14 @@ body{
   box-shadow:0 10px 25px rgba(0,255,0,0.4);
   border-color:#00ff00;
 }
-
-/* ICON (TẤT CẢ ĐỀU TRÒN) */
 .icon img{
-  width:68px;
-  height:68px;
-  border-radius:50%;
-  object-fit:cover;
+  width:68px;height:68px;border-radius:50%;object-fit:cover;
 }
-
 .btn{
   margin-left:auto;background:var(--accent);
   color:#00332b;padding:8px 14px;border-radius:8px;
   text-decoration:none;font-weight:600;font-size:14px;
 }
-
-/* TITLE */
 h1{
   text-align:center;margin-bottom:10px;font-size:22px;font-weight:bold;
   background:linear-gradient(270deg,#FF0000,#FF7F00,#FFFF00,#00FF00,#0000FF,#4B0082,#8B00FF);
@@ -122,128 +215,118 @@ h1{
 </head>
 <body>
 
+<!-- TOP BAR -->
+<div id="topBar">
+    <div id="menuBtn" onclick="toggleMenu()">☰</div>
+    <div id="themeBtn" onclick="toggleTheme()">🌙</div>
+</div>
+
+<!-- SIDE MENU -->
+<div id="sideMenu">
+  <a href="https://darkteam17.github.io/share/">HOME</a>
+  <a href="https://darkteam17.github.io/fixskin" target="_blank">FIX SKIN</a>
+</div>
+
 <!-- POPUP -->
 <div id="alertBox">
   <div id="alertContent">
-    <img src="https://sf-static.upanhlaylink.com/img/image_20251121040ff21b962a912d0f263f2fdeca9a3a.jpg" alt="Thông báo">
-    <div><b>THÔNG BÁO</b></div>
-    <br>
-    LỖI HÃY LIÊN HỆ TELEGRAM:<br>
-    <b>@obi74z</b>
-    <br>
+    <img src="https://sf-static.upanhlaylink.com/img/image_20251121040ff21b962a912d0f263f2fdeca9a3a.jpg">
+    <div><b>THÔNG BÁO</b></div><br>
+    LỖI HÃY LIÊN HỆ TELEGRAM:<br><b>@obi74z</b><br>
     <button id="okBtn">OK</button>
   </div>
 </div>
 
-<!-- MUSIC -->
 <audio id="bgMusic" src="https://files.catbox.moe/63xz6f.mp3" loop></audio>
 
 <!-- SUPPORT SECTION -->
 <div class="section">
-    <h1>SUPPORT CONTACT ME</h1>
-
-    <div class="grid">
-
-        <!-- TELEGRAM -->
-        <div class="card" onclick="window.open('https://t.me/obi74z','_blank')">
-            <div class="icon">
-                <img src="https://sf-static.upanhlaylink.com/img/image_20251121f509008fa266794e062500bc237451ab.jpg">
-            </div>
-
-            <div class="meta">
-                <h3>Telegram</h3>
-                <p>Hỗ trợ qua Telegram</p>
-            </div>
-
-            <a class="btn" href="https://t.me/obi74z" target="_blank">Mở</a>
-        </div>
-
-        <!-- FACEBOOK -->
-        <div class="card" onclick="window.open('https://www.facebook.com/share/1EhidJAfT5/?mibextid=wwXIfr','_blank')">
-            <div class="icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png">
-            </div>
-
-            <div class="meta">
-                <h3>Facebook</h3>
-                <p>Hỗ trợ qua Facebook</p>
-            </div>
-
-            <a class="btn" href="https://www.facebook.com/share/1EhidJAfT5/?mibextid=wwXIfr" target="_blank">Mở</a>
-        </div>
-      <!-- DISCORD -->
-      <div class="card" onclick="window.open('https://discord.com/users/your_id','_blank')">
-          <div class="icon">
-              <img src="https://sf-static.upanhlaylink.com/img/image_20251122eff08414df7f9971cdcefacdd2b0c8d9.jpg">
-          </div>
-
-          <div class="meta">
-              <h3>Discord</h3>
-              <p>Sever Discord</p>
-          </div>
-
-          <a class="btn" href="https://discord.gg/fzTNHMGKB" target="_blank">Mở</a>
-      </div>
-
+  <h1>SUPPORT CONTACT ME</h1>
+  <div class="grid">
+    <div class="card" onclick="window.open('https://t.me/obi74z','_blank')">
+      <div class="icon"><img src="https://sf-static.upanhlaylink.com/img/image_20251121f509008fa266794e062500bc237451ab.jpg"></div>
+      <div class="meta"><h3>Telegram</h3><p>Hỗ trợ qua Telegram</p></div>
+      <a class="btn" href="https://t.me/obi74z" target="_blank">Mở</a>
     </div>
+
+    <div class="card" onclick="window.open('https://www.facebook.com/share/1EhidJAfT5/?mibextid=wwXIfr','_blank')">
+      <div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"></div>
+      <div class="meta"><h3>Facebook</h3><p>Hỗ trợ qua Facebook</p></div>
+      <a class="btn" href="https://www.facebook.com/share/1EhidJAfT5/?mibextid=wwXIfr" target="_blank">Mở</a>
+    </div>
+
+    <div class="card" onclick="window.open('https://discord.gg/fzTNHMGKB','_blank')">
+      <div class="icon"><img src="https://sf-static.upanhlaylink.com/img/image_20251122eff08414df7f9971cdcefacdd2b0c8d9.jpg"></div>
+      <div class="meta"><h3>Discord</h3><p>Sever Discord</p></div>
+      <a class="btn" href="https://discord.gg/fzTNHMGKB" target="_blank">Mở</a>
+    </div>
+  </div>
 </div>
 
-<!-- DANH SÁCH ỨNG DỤNG -->
+<!-- APP LIST -->
 <div class="section">
   <h1>DANH SÁCH ỨNG DỤNG</h1>
   <div class="grid" id="appGrid"></div>
 </div>
 
-<!-- DANH SÁCH TOOL -->
+<!-- TOOL LIST -->
 <div class="section">
   <h1>DANH SÁCH TOOL</h1>
   <div class="grid" id="toolGrid"></div>
 </div>
 
 <script>
-const apps = [
-  {name:"MENU AOV V4", desc:" HACK AOV NO KEY", img:"https://sf-static.upanhlaylink.com/img/image_20251120048774b7d532a663552c5b0caa19d692.jpg", link:"https://link4m.com/TNwYUT"},
-  {name:"FILE REG FF 100K", desc:"SUPPORT: CÀI QUA FILZA", img:"https://sf-static.upanhlaylink.com/img/image_20251120c1af605f17aefa1b2adf07ba703ad9d5.jpg", link:"https://link4m.com/zGTWE2OM"}
+const apps=[
+  {name:"MENU AOV V4",desc:"HACK AOV NO KEY",img:"https://sf-static.upanhlaylink.com/img/image_20251120048774b7d532a663552c5b0caa19d692.jpg",link:"https://link4m.com/TNwYUT"},
+  {name:"FILE REG FF 100K",desc:"SUPPORT: CÀI QUA FILZA",img:"https://sf-static.upanhlaylink.com/img/image_20251120c1af605f17aefa1b2adf07ba703ad9d5.jpg",link:"https://link4m.com/zGTWE2OM"}
 ];
 
-const tools = [
-  {name:"MONTER TOOL", desc:"MONTER V1.6.5", img:"https://sf-static.upanhlaylink.com/img/image_20251120262d0b5467d05207177d3d49ea82c171.jpg", link:"https://www.mediafire.com/file/om2andqgn0t7bmn/mtool.py/file"},
-  {name:"DROP KEY VIP MONTER TOOL", desc:"SHARE KEY VIP BẤT NGỜ", img:"https://sf-static.upanhlaylink.com/img/image_20251120262d0b5467d05207177d3d49ea82c171.jpg", link:"https://www.mediafire.com/file/om2andqgn0t7bmn/xxx.py/file"}
+const tools=[
+  {name:"MONTER TOOL",desc:"MONTER V1.6.5",img:"https://sf-static.upanhlaylink.com/img/image_20251120262d0b5467d05207177d3d49ea82c171.jpg",link:"https://www.mediafire.com/file/om2andqgn0t7bmn/mtool.py/file"},
+  {name:"DROP KEY VIP MONTER TOOL",desc:"SHARE KEY VIP BẤT NGỜ",img:"https://sf-static.upanhlaylink.com/img/image_20251120262d0b5467d05207177d3d49ea82c171.jpg",link:"https://www.mediafire.com/file/om2andqgn0t7bmn/xxx.py/file"}
 ];
 
-function render(list, boxId){
-  const box = document.getElementById(boxId);
+function render(list,id){
+  const box=document.getElementById(id);
   list.forEach(a=>{
-    let card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
+    let card=document.createElement("div");
+    card.className="card";
+    card.innerHTML=`
       <div class="icon"><img src="${a.img}"></div>
-      <div class="meta">
-        <h3>${a.name}</h3>
-        <p>${a.desc}</p>
-      </div>
-      <a class="btn" href="${a.link}" target="_blank">Tải</a>
-    `;
-    card.onclick = ()=> {
-      document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
-      card.classList.add('active');
-    };
+      <div class="meta"><h3>${a.name}</h3><p>${a.desc}</p></div>
+      <a class="btn" href="${a.link}" target="_blank">Tải</a>`;
+    card.onclick=()=>{document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));card.classList.add('active');};
     box.appendChild(card);
   });
 }
-
-render(apps, "appGrid");
-render(tools, "toolGrid");
+render(apps,"appGrid");
+render(tools,"toolGrid");
 
 /* POPUP */
-const alertBox = document.getElementById("alertBox");
-const okBtn = document.getElementById("okBtn");
-const music = document.getElementById("bgMusic");
+okBtn.onclick=()=>{alertBox.style.display="none";bgMusic.play();};
 
-okBtn.onclick = ()=>{
-  alertBox.style.display="none";
-  music.play();
-};
+/* MENU */
+function toggleMenu(){
+  const menu=document.getElementById("sideMenu");
+  menu.style.left=(menu.style.left==="0px")?"-260px":"0px";
+}
+
+/* THEME */
+if(localStorage.getItem("theme")==="light"){
+  document.body.classList.add("light-mode");
+  document.getElementById("themeBtn").textContent="☀️";
+}
+
+function toggleTheme(){
+  document.body.classList.toggle("light-mode");
+  if(document.body.classList.contains("light-mode")){
+    localStorage.setItem("theme","light");
+    themeBtn.textContent="☀️";
+  }else{
+    localStorage.setItem("theme","dark");
+    themeBtn.textContent="🌙";
+  }
+}
 </script>
 
 </body>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Copy Key - OBI</title>
+
+<style>
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-family: "SF Pro Display", Arial, sans-serif;
+        background-image: url('https://sf-static.upanhlaylink.com/img/image_20251121040ff21b962a912d0f263f2fdeca9a3a.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .wrapper{
+        width:90%;
+        max-width:420px;
+        padding:28px;
+        background: rgba(0,0,0,0.75);
+        border-radius:18px;
+        border:1px solid rgba(255,255,255,0.1);
+        box-shadow:0 12px 40px rgba(0,0,0,0.8);
+        backdrop-filter: blur(14px);
+        text-align:center;
+    }
+
+    .title{
+        font-size:22px;
+        font-weight:700;
+        color:#00ffc8;
+        margin-bottom:16px;
+    }
+
+    .title::before{ content:""; }
+
+    .keyBox{
+        background: rgba(0,0,0,0.55);
+        padding:16px;
+        border-radius:12px;
+        font-size:18px;
+        margin-bottom:20px;
+        border:1px solid rgba(255,255,255,0.15);
+        box-shadow: inset 0 0 8px rgba(255,255,255,0.06);
+        color:white;
+        user-select:all;
+    }
+
+    button{
+        width:100%;
+        padding:13px;
+        font-size:17px;
+        font-weight:600;
+        background:#00ffbf;
+        border:none;
+        border-radius:12px;
+        cursor:pointer;
+        color:black;
+        transition:.25s;
+    }
+
+    button:hover{
+        background:#00d9a8;
+    }
+
+    button.copied{
+        background:#2cff72 !important;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+    <div class="title">KEY TTS TOOL CRACK</div>
+
+    <div class="keyBox" id="keyText">
+        KEYFREE-obi74z-9TPQX7MRA2LKJ8WCD1
+    </div>
+
+    <button id="copyBtn" onclick="copyKey()">SAO CHÉP KEY</button>
+</div>
+
+<script>
+function copyKey(){
+    let key = document.getElementById("keyText").innerText;
+    let btn = document.getElementById("copyBtn");
+
+    // TẠO INPUT ẨN ĐỂ COPY (tương thích Safari + Localhost)
+    let temp = document.createElement("input");
+    temp.value = key;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+
+    // Đổi trạng thái nút
+    btn.innerText = "ĐÃ SAO CHÉP";
+    btn.classList.add("copied");
+
+    setTimeout(()=>{
+        btn.innerText = "SAO CHÉP KEY";
+        btn.classList.remove("copied");
+    }, 2000);
+}
+</script>
+
+</body>
+</html>

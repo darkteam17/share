@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Copy Key - OBI</title>
+<title>KEY TTS - OBI</title>
 
 <style>
     body{
@@ -14,101 +14,67 @@
         justify-content:center;
         align-items:center;
         font-family: "SF Pro Display", Arial, sans-serif;
-        background-image: url('https://sf-static.upanhlaylink.com/img/image_20251121040ff21b962a912d0f263f2fdeca9a3a.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        background:#111;
+        background-image:url('https://sf-static.upanhlaylink.com/img/image_20251121040ff21b962a912d0f263f2fdeca9a3a.jpg');
+        background-size:cover;
+        background-position:center;
     }
 
-    .wrapper{
+    .box{
         width:90%;
         max-width:420px;
-        padding:28px;
-        background: rgba(0,0,0,0.75);
+        padding:30px;
+        background:rgba(0,0,0,0.75);
         border-radius:18px;
-        border:1px solid rgba(255,255,255,0.1);
-        box-shadow:0 12px 40px rgba(0,0,0,0.8);
-        backdrop-filter: blur(14px);
+        border:1px solid rgba(255,255,255,0.15);
+        backdrop-filter:blur(10px);
+        box-shadow:0 15px 40px rgba(0,0,0,0.8);
         text-align:center;
     }
 
-    .title{
-        font-size:22px;
-        font-weight:700;
-        color:#00ffc8;
+    h2{
+        color:#00ffbf;
         margin-bottom:16px;
+        font-size:24px;
     }
 
     .keyBox{
-        background: rgba(0,0,0,0.55);
-        padding:16px;
+        padding:15px;
+        background:#00000080;
         border-radius:12px;
+        border:1px solid rgba(255,255,255,0.2);
+        color:white;
         font-size:18px;
         margin-bottom:20px;
-        border:1px solid rgba(255,255,255,0.15);
-        box-shadow: inset 0 0 8px rgba(255,255,255,0.06);
-        color:white;
         user-select:all;
     }
 
     button{
         width:100%;
-        padding:13px;
-        font-size:17px;
-        font-weight:600;
-        background:#00ffbf;
+        padding:12px;
         border:none;
         border-radius:12px;
+        background:#00ffbf;
+        color:#000;
+        font-weight:bold;
+        font-size:17px;
         cursor:pointer;
-        color:black;
         transition:.25s;
-    }
-
-    button:hover{
-        background:#00d9a8;
     }
 
     button.copied{
         background:#2cff72 !important;
     }
-
-    /* Nút quay lại nằm dưới */
-    .back-btn{
-        margin-top:14px;
-        width:100%;
-        padding:12px;
-        background:rgba(0,0,0,0.65);
-        border:1px solid rgba(255,255,255,0.25);
-        border-radius:12px;
-        color:#00ffc3;
-        font-weight:600;
-        font-size:16px;
-        cursor:pointer;
-        backdrop-filter: blur(8px);
-        transition:.25s;
-    }
-
-    .back-btn:hover{
-        background:rgba(0,0,0,0.85);
-    }
 </style>
 </head>
-
 <body>
 
-<div class="wrapper">
-    <div class="title">KEY TTS TOOL CRACK</div>
+<div class="box">
+    <h2>KEY FREE TTS</h2>
 
-    <div class="keyBox" id="keyText">
-        KEYFREE-obi74z-9TPQX7MRA2LKJ8WCD1
-    </div>
+    <div class="keyBox" id="keyText">KEYFREE-obi74z-9TPQX7MRA2LKJ8WCD1</div>
 
     <button id="copyBtn" onclick="copyKey()">SAO CHÉP KEY</button>
-
-    <button class="back-btn" onclick="location.href='https://darkteam17.github.io/share/'">
-        ⬅ VỀ TRANG CHÍNH
-    </button>
 </div>
 
 <script>
@@ -129,7 +95,7 @@ function copyKey(){
     setTimeout(()=>{
         btn.innerText = "SAO CHÉP KEY";
         btn.classList.remove("copied");
-    }, 2000);
+    },2000);
 }
 </script>
 

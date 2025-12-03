@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIP Service</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* LOGO */
+.logo {
+    width: 120px;
+    height: 120px;
+    margin: 20px auto 10px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* 3 NÚT MENU */
+.menu-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.menu-btn {
+    background: #111;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+.menu-btn:hover {
+    background: #00ffc3;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ffc3;
+}
+
+/* HỘP NỘI DUNG POPUP */
+.info-box {
+    background: #0f0f0f;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #222;
+    display: none;
+    animation: fadeIn 0.4s ease-out forwards;
+    line-height: 1.6;
+    color: #e8e8e8;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* GÓI VIP */
+.price-box {
+    background: #111;
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    position: relative;
+    border: 2px solid rgba(0, 255, 195, 0.2); /* viền xanh nhẹ */
+    transition: 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    cursor: pointer;
+}
+
+/* Hover hoặc active sẽ sáng neon hơn */
+.price-box:hover, .price-box:active {
+    transform: scale(1.08);
+    border-color: #00ffc3; /* viền xanh đậm */
+    box-shadow:
+        0 0 10px #00ffc3, 
+        0 0 20px #00ffc3, 
+        0 0 40px #00ff88, 
+        0 0 60px #00ff88aa;
+}
+
+.price-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #00ffc3;
+}
+
+/* badge có ánh sáng */
+.badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #000;
+}
+
+.badge.tietkiem {
+    background: linear-gradient(90deg,#00ffc2,#00ff88);
+    text-shadow: 0 0 8px #00ffc2, 0 0 16px #00ff88, 0 0 20px #00ffc3;
+}
+
+.badge.vip {
+    background: linear-gradient(90deg,#ffe066,#ffb800);
+    text-shadow: 0 0 8px #ffe066, 0 0 16px #ffb800, 0 0 20px #ffd700;
+}
+
+/* Danh sách lợi ích với ✅ cân đối */
+.benefits li {
+    margin-bottom: 6px;
+    color: #dcdcdc;
+    list-style: none;
+    display: flex;
+    align-items: center; /* canh giữa theo dòng chữ */
+}
+
+.benefits li::before {
+    content: "✅";
+    color: #00ffc3;
+    margin-right: 8px; /* khoảng cách giữa ✅ và chữ */
+    flex-shrink: 0; /* không bị co khi chữ dài */
+}
+
+/* Nút copy STK/CTK/BANK */
+.copy-btn {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 6px;
+    font-size: 12px;
+    background: #00ffc3;
+    color: #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.copy-btn:hover {
+    background: #00ff88;
+}
+
+/* Canh chữ copy đúng với nội dung */
+.copy-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.copy-container b {
+    flex: 1;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="https://sf-static.upanhlaylink.com/img/image_20251203d993db98316141a7b64dda35398de589.jpg"
+             style="width:100%;height:100%;object-fit:cover;">
+    </div>
+
+    <!-- 3 NÚT MENU -->
+    <div class="menu-buttons">
+        <div class="menu-btn" onclick="showInfo('notice')">LƯU Ý</div>
+        <div class="menu-btn" onclick="showInfo('bank')">BANK</div>
+        <div class="menu-btn" onclick="window.location.href='https://t.me/obi74z'">TELEGRAM</div>
+    </div>
+
+    <!-- Khung hiện nội dung -->
+    <div id="notice" class="info-box">
+        <b>⚠ LƯU Ý</b><br><br>
+        - Sau khi thanh toán vui lòng chụp bill gửi qua Telegram.<br>
+        - Admin sẽ check và duyệt ngay.<br>
+        - Không hoàn tiền nếu bạn nhập sai thông tin.<br>
+        - Khi mua gói bạn đồng ý với điều khoản sử dụng.<br>
+    </div>
+
+    <div id="bank" class="info-box">
+    <b>🏦 THÔNG TIN BANK</b><br><br>
+
+    <div class="copy-container">
+        <b>Ngân hàng: Vietcombank</b>
+        <!-- nút sao chép đã bỏ -->
+    </div>
+
+    <div class="copy-container">
+        <b>STK: 1033435099</b>
+        <span class="copy-btn" onclick="copyText('stk')">Sao chép</span>
+    </div>
+
+    <div class="copy-container">
+        <b>CTK: VU XUAN BACH</b>
+        <span class="copy-btn" onclick="copyText('ctk')">Sao chép</span>
+    </div>
+
+    <div class="copy-container">
+        <b>Nội Dung: BANKOBI1230</b>
+        <span class="copy-btn" onclick="copyTextValue('BANKOBI1230')">Sao chép</span>
+    </div>
+
+    <br>
+    Sau khi chuyển khoản → vào Telegram gửi bill để được duyệt.
+</div>
+
+    <!-- GÓI 1 THÁNG -->
+    <div class="price-box">
+        <div class="badge tietkiem">Tiết kiệm</div>
+        <div class="price-title">Gói 1 Tháng</div>
+        <div class="price">10.000đ</div>
+        <ul class="benefits">
+            <li>Không cần vượt link</li>
+            <li>Free REG FF</li>
+            <li>Ưu tiên hỗ trợ</li>
+        </ul>
+    </div>
+
+    <!-- GÓI 2 THÁNG -->
+    <div class="price-box">
+        <div class="badge tietkiem">Tiết kiệm</div>
+        <div class="price-title">Gói 2 Tháng</div>
+        <div class="price">20.000đ</div>
+        <ul class="benefits">
+            <li>Không cần vượt link</li>
+            <li>Free REG FF</li>
+            <li>Ưu tiên hỗ trợ</li>
+        </ul>
+    </div>
+
+    <!-- GÓI 1 NĂM -->
+    <div class="price-box">
+        <div class="badge vip">VIP</div>
+        <div class="price-title">Gói 1 Năm</div>
+        <div class="price">120.000đ</div>
+        <ul class="benefits">
+            <li>Không cần vượt link</li>
+            <li>Free REG FF</li>
+            <li>Giảm giá khi mua đồ</li>
+            <li>Ưu tiên hỗ trợ</li>
+            <li>Hỗ trợ đổi tên menu</li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+function showInfo(id) {
+    document.getElementById("notice").style.display = "none";
+    document.getElementById("bank").style.display = "none";
+
+    let box = document.getElementById(id);
+    box.style.display = "block";
+    box.style.opacity = 0;
+
+    setTimeout(() => {
+        box.style.transition = "0.4s";
+        box.style.opacity = 1;
+    }, 10);
+}
+
+function copyText(id) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        alert("Đã sao chép: " + text);
+    });
+}
+
+function copyTextValue(value) {
+    navigator.clipboard.writeText(value).then(() => {
+        alert("Đã sao chép: " + value);
+    });
+}
+</script>
+
+</body>
+</html>

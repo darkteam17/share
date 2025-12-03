@@ -18,13 +18,13 @@ body{
   font-family:Inter,Arial,sans-serif;
   color:var(--text);
   padding:20px;
-  padding-top:85px; /* ĐẨY NỘI DUNG XUỐNG DƯỚI THANH BAR */
+  padding-top:85px;
   min-height:100vh;
   overflow-x:hidden;
-  background-image: url('https://sf-static.upanhlaylink.com/img/image_20251121040ff21b962a912d0f263f2fdeca9a3a.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image:url('https://sf-static.upanhlaylink.com/img/image_2025120383cf9478aab8d4d44b8632f6058b9a64.jpg');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
 }
 
 /* TOP BAR */
@@ -76,7 +76,7 @@ body{
   background: rgba(0,0,0,0.87);
   backdrop-filter: blur(8px);
 
-  padding: 90px 22px 25px; /* ⬅ HOME không bị chèn bởi nút 3 gạch */
+  padding: 90px 22px 25px;
 
   z-index: 99998;
   transition: 0.35s ease;
@@ -94,40 +94,6 @@ body{
   font-weight:bold;
   text-decoration:none;
   transition:0.3s;
-}
-
-#sideMenu a:hover{
-  background:rgba(0,255,128,0.35);
-}
-
-/* DARK/LIGHT MODE */
-.light-mode{
-  --accent:#0066ff;
-  --glow:#3399ff;
-  --text:#000;
-  background:#e8f0ff !important;
-}
-
-.light-mode #topBar{
-  background:#d7e5ff;
-  border-bottom-color:#0066ff;
-}
-
-.light-mode #menuBtn,
-.light-mode #themeBtn{
-  background:#fff;
-  border-color:#0066ff;
-  color:#0066ff;
-}
-
-.light-mode #sideMenu{
-  background:#ffffffdd;
-  border-right-color:#0066ff;
-}
-
-.light-mode #sideMenu a{
-  background:#d8e6ff;
-  color:#003399;
 }
 
 /* POPUP */
@@ -206,10 +172,20 @@ h1{
   -webkit-text-fill-color:transparent;
   animation:rainbow 15s ease infinite;
 }
-@keyframes rainbow{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+
+/* ❄️ TUYẾT RƠI NHẸ */
+.snowflake{
+  position: fixed;
+  top: -10px;
+  color: white;
+  font-size: 12px;
+  opacity: 0.8;
+  animation: fall linear infinite;
+  pointer-events: none;
+  z-index: 999999;
+}
+@keyframes fall{
+  to { transform: translateY(110vh); }
 }
 </style>
 </head>
@@ -312,6 +288,23 @@ function toggleMenu(){
   const menu=document.getElementById("sideMenu");
   menu.style.left=(menu.style.left==="0px")?"-260px":"0px";
 }
+
+/* ❄️ TUYẾT RƠI NHẸ */
+function snow(){
+  let count = 18; // ít tuyết
+  for(let i=0;i<count;i++){
+    let s = document.createElement("div");
+    s.className = "snowflake";
+    s.textContent = "❄";
+    s.style.left = Math.random()*100 + "vw";
+    s.style.fontSize = 10 + Math.random()*10 + "px";
+    s.style.opacity = 0.4 + Math.random()*0.5;
+    s.style.animationDuration = 5 + Math.random()*7 + "s";
+    document.body.appendChild(s);
+    setTimeout(()=>{ s.remove(); }, 12000);
+  }
+}
+setInterval(snow, 1500);
 
 /* THEME */
 if(localStorage.getItem("theme")==="light"){

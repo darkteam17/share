@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DANH SÁCH MUA VIP 👑</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #0d0d0d;
+        color: #fff;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 28px;
+    }
+    #searchBox {
+        width: 100%;
+        padding: 12px;
+        margin: 15px 0 25px 0;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+        outline: none;
+    }
+
+    /* CARD CHUNG */
+    .card {
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-left: 5px solid #fff;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    /* XANH LÁ */
+    .green {
+        background: rgba(0, 255, 100, 0.08);
+        border-left-color: #00ff6a;
+        box-shadow: 0 0 10px rgba(0, 255, 106, 0.5);
+        color: #00ff6a;
+    }
+
+    /* VÀNG */
+    .yellow {
+        background: rgba(255, 230, 0, 0.1);
+        border-left-color: #ffe600;
+        box-shadow: 0 0 10px rgba(255, 230, 0, 0.4);
+        color: #ffe600;
+    }
+
+    .user-img {
+        width: 100px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .name {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .info {
+        line-height: 1.6;
+    }
+
+    /* NHẤN MẠNH GÓI + NGÀY MUA + HẠN */
+    .label {
+        font-weight: bold;
+        opacity: 0.95;
+    }
+</style>
+
+<script>
+function searchUser() {
+    let input = document.getElementById("searchBox").value.toLowerCase();
+    let cards = document.getElementsByClassName("card");
+
+    for (let i = 0; i < cards.length; i++) {
+        let name = cards[i].getElementsByClassName("name")[0].innerText.toLowerCase();
+        cards[i].style.display = name.includes(input) ? "block" : "none";
+    }
+}
+</script>
+</head>
+
+<body>
+
+<h1>DANH SÁCH MUA VIP 👑</h1>
+
+<input type="text" id="searchBox" onkeyup="searchUser()" placeholder="🔍 Tìm kiếm tên người dùng...">
+
+<!-- USER 1 - Xanh lá -->
+<div class="card green">
+    <img class="user-img" src="https://sf-static.upanhlaylink.com/img/image_20251122eff08414df7f9971cdcefacdd2b0c8d9.jpg">
+    <div class="name">itmenvin</div>
+    <div class="info">
+        <span class="label">Giao dịch qua:</span> Discord<br>
+        <span class="label">Gói:</span> 10K<br>
+        <span class="label">Ngày mua:</span> 4/12/2025<br>
+        <span class="label">Hết hạn:</span> 4/1/2026
+    </div>
+</div>
+
+<!-- USER 2 - Xanh lá -->
+<div class="card green">
+    <img class="user-img" src="https://sf-static.upanhlaylink.com/img/image_20251122eff08414df7f9971cdcefacdd2b0c8d9.jpg">
+    <div class="name">duong055038</div>
+    <div class="info">
+        <span class="label">Giao dịch qua:</span> Discord<br>
+        <span class="label">Gói:</span> 10K<br>
+        <span class="label">Ngày mua:</span> 1/12/2025<br>
+        <span class="label">Hết hạn:</span> 1/1/2026
+    </div>
+</div>
+
+<!-- USER 3 - Vàng -->
+<div class="card yellow">
+    <img class="user-img" src="https://sf-static.upanhlaylink.com/img/image_20251122eff08414df7f9971cdcefacdd2b0c8d9.jpg">
+    <div class="name">obi74.</div>
+    <div class="info">
+        <span class="label">Giao dịch qua:</span> Discord<br>
+        <span class="label">Gói:</span> 120K<br>
+        <span class="label">Ngày mua:</span> 1/12/2025<br>
+        <span class="label">Hết hạn:</span> 1/12/2026
+    </div>
+</div>
+
+</body>
+</html>

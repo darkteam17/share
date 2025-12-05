@@ -18,7 +18,7 @@ body{
   font-family:Inter,Arial,sans-serif;
   color:var(--text);
   padding:20px;
-  padding-top:85px;
+  padding-top:140px;
   min-height:100vh;
   overflow-x:hidden;
   background-image:url('https://sf-static.upanhlaylink.com/img/image_2025120383cf9478aab8d4d44b8632f6058b9a64.jpg');
@@ -66,6 +66,50 @@ body{
   box-shadow:0 0 10px rgba(0,255,200,.6);
 }
 
+/* BIO */
+#bioBox{
+  margin-top:10px;
+  background:rgba(0,0,0,0.55);
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  backdrop-filter:blur(6px);
+  border:2px solid #00ffc3;
+  animation:borderGlow 3s infinite alternate;
+}
+
+#bioAvatar{
+  width:95px;
+  height:95px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #00ffc3;
+  box-shadow:0 0 10px #00ffc3;
+}
+
+#bioName{
+  margin-top:10px;
+  font-size:24px;
+  font-weight:bold;
+  color:yellow;
+}
+
+#bioTyping{
+  margin-top:6px;
+  font-size:18px;
+  height:26px;
+}
+
+#cursor{
+  color:#00ffea;
+  font-weight:bold;
+  animation:blink 0.7s infinite;
+}
+
+@keyframes blink{
+  50% { opacity:0; }
+}
+
 /* SIDE MENU */
 #sideMenu{
   position: fixed;
@@ -75,9 +119,7 @@ body{
   height: 100%;
   background: rgba(0,0,0,0.87);
   backdrop-filter: blur(8px);
-
   padding: 90px 22px 25px;
-
   z-index: 99998;
   transition: 0.35s ease;
   border-right: 2px solid var(--accent);
@@ -173,7 +215,7 @@ h1{
   animation:rainbow 15s ease infinite;
 }
 
-/* ❄️ TUYẾT RƠI NHẸ */
+/* ❄️ TUYẾT */
 .snowflake{
   position: fixed;
   top: -10px;
@@ -187,6 +229,8 @@ h1{
 @keyframes fall{
   to { transform: translateY(110vh); }
 }
+
+}
 </style>
 </head>
 <body>
@@ -194,7 +238,15 @@ h1{
 <!-- TOP BAR -->
 <div id="topBar">
     <div id="menuBtn" onclick="toggleMenu()">☰</div>
-    <div id="themeBtn" onclick="toggleTheme()">🌙</div>
+    <div id="themeBtn"
+onclick="toggleTheme()">🌙</div>
+</div>
+
+<!-- BIO -->
+<div id="bioBox">
+  <img src="https://sf-static.upanhlaylink.com/img/image_20251203d993db98316141a7b64dda35398de589.jpg" id="bioAvatar">
+  <div id="bioName">Nguyễn Xuân Khánh</div>
+  <div id="bioTyping"><span id="typingText"></span><span id="cursor">|</span></div>
 </div>
 
 <!-- SIDE MENU -->
@@ -210,7 +262,7 @@ h1{
 <div id="alertBox">
   <div id="alertContent">
     <img src="https://sf-static.upanhlaylink.com/img/image_20251121040ff21b962a912d0f263f2fdeca9a3a.jpg">
-    <div><b>THÔNG BÁO</b></div><br>
+    <div><b>HỢP TÁC</b></div><br>
     Trung Nguyên X Xuân Khánh<br><b>🤓</b><br>
     <button id="okBtn">OK</button>
   </div>
@@ -228,11 +280,6 @@ h1{
       <a class="btn" href="https://t.me/obi74z" target="_blank">Mở</a>
     </div>
 
-    <div class="card" onclick="window.open('https://www.facebook.com/share/1EhidJAfT5/?mibextid=wwXIfr','_blank')">
-      <div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"></div>
-      <div class="meta"><h3>Facebook</h3><p>Hỗ trợ qua Facebook</p></div>
-      <a class="btn" href="https://www.facebook.com/share/1EhidJAfT5/?mibextid=wwXIfr" target="_blank">Mở</a>
-    </div>
 
     <div class="card" onclick="window.open('https://discord.gg/fzTNHMGKB','_blank')">
       <div class="icon"><img src="https://sf-static.upanhlaylink.com/img/image_20251122eff08414df7f9971cdcefacdd2b0c8d9.jpg"></div>
@@ -253,6 +300,7 @@ h1{
   <h1>DANH SÁCH TOOL</h1>
   <div class="grid" id="toolGrid"></div>
 </div>
+
 
 <script>
 const apps=[
@@ -293,9 +341,9 @@ function toggleMenu(){
   menu.style.left=(menu.style.left==="0px")?"-260px":"0px";
 }
 
-/* ❄️ TUYẾT RƠI NHẸ */
+/* ❄️ TUYẾT */
 function snow(){
-  let count = 18; // ít tuyết
+  let count = 18;
   for(let i=0;i<count;i++){
     let s = document.createElement("div");
     s.className = "snowflake";
@@ -326,6 +374,36 @@ function toggleTheme(){
     themeBtn.textContent="😍";
   }
 }
+
+/* TYPING EFFECT */
+let messages = ["I LOVE YOU ❤️", "TẢI HACK FREE Ở DƯỚI 🤩"];["FREE HACK 🔥"]
+let index = 0;
+let charIndex = 0;
+let deleting = false;
+let typingEl = document.getElementById("typingText");
+
+function typeLoop(){
+  let current = messages[index];
+
+  if(!deleting){
+    typingEl.textContent = current.substring(0, charIndex++);
+    if(charIndex > current.length){
+      deleting = true;
+      setTimeout(typeLoop, 2000);
+      return;
+    }
+  }else{
+    typingEl.textContent = current.substring(0, charIndex--);
+    if(charIndex < 0){
+      deleting = false;
+      index = (index + 1) % messages.length;
+    }
+  }
+
+  setTimeout(typeLoop, deleting ? 50 : 90);
+}
+
+typeLoop();
 </script>
 
 </body>
